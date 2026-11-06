@@ -1,0 +1,127 @@
+{
+ "seed": 408,
+ "predictions": {
+  "ml_f1": {
+   "text": "F1 ~ 0.87, precision cao hơn recall do bản chất công thức",
+   "time": "13:21:12"
+  },
+  "ml_lr": {
+   "text": "lr = 0.001 thì mô hình học được đặc trưng của dữ liệu một cách ổn định, với lr = 50 thì mô hình có hiện tượng không hội tụ",
+   "time": "13:21:19"
+  },
+  "dl_curve": {
+   "text": "1. Val loss sẽ không giảm mãi mà sẽ có giá trị bảo hóa. 2. MLP sẽ hơn logistic regression",
+   "time": "13:21:53"
+  },
+  "dl_relu": {
+   "text": "Nếu bỏ lớp ReLU thì mô hình tương đương với một lớp Linear trở thành mô hình tuyến tính đợi giản. Dự đoán F1 sẽ giảm và rơi vào hiện tượng underfitting, do chỉ còn 1 lớp linear nên khó phân tách các lớp dữ liệu.",
+   "time": "14:30:36"
+  },
+  "emb_search": {
+   "text": "ham ",
+   "time": "15:19:13"
+  },
+  "emb_tricky": {
+   "text": "Dự đoán Encoder đoán đúng nhiều hơn",
+   "time": "16:11:45"
+  }
+ },
+ "checks": {
+  "1.1 vectorize": true,
+  "1.2 sigmoid / predict_proba": true,
+  "1.3 train_logreg": true,
+  "1.4 metrics": true,
+  "2.1 build_mlp": true,
+  "2.2 train_mlp": true,
+  "3.1–3.2 cosine / top_k_similar": true,
+  "3.3 knn_predict": true
+ },
+ "experiments": [
+  {
+   "key": "ml_f1",
+   "time": "13:21:13"
+  },
+  {
+   "key": "ml_lr",
+   "time": "13:21:19"
+  },
+  {
+   "key": "dl_curve",
+   "time": "13:21:53"
+  },
+  {
+   "key": "dl_relu",
+   "time": "14:30:38"
+  },
+  {
+   "key": "emb_search",
+   "time": "15:19:14"
+  },
+  {
+   "key": "emb_tricky",
+   "time": "16:11:46"
+  }
+ ],
+ "results": {
+  "1. BoW + LogReg (tự code)": {
+   "accuracy": 0.9625806451612903,
+   "precision": 0.9873417721518988,
+   "recall": 0.7358490566037735,
+   "f1": 0.8432432432432432,
+   "f1_SUB": 0.7499999999999999,
+   "train_s": 5.898070797999992,
+   "msg_per_s": 12464.765726097472,
+   "p50_ms": 0.05640099999482118,
+   "p95_ms": 0.11645889998703732,
+   "usd_per_1k": 0.0
+  },
+  "2. BoW + MLP (deep learning)": {
+   "accuracy": 0.984516129032258,
+   "precision": 1.0,
+   "recall": 0.8867924528301887,
+   "f1": 0.9400000000000001,
+   "f1_SUB": 0.9743589743589743,
+   "train_s": 11.255838694000033,
+   "msg_per_s": 10147.693591613232,
+   "p50_ms": 0.30274400000962487,
+   "p95_ms": 2.631216049996965,
+   "usd_per_1k": 0.0
+  },
+  "3a. Encoder (MiniLM) + kNN": {
+   "accuracy": 0.9806451612903225,
+   "precision": 0.8956521739130435,
+   "recall": 0.9716981132075472,
+   "f1": 0.9321266968325792,
+   "f1_SUB": 1.0,
+   "train_s": 131.6387955119999,
+   "msg_per_s": 15.62102480129082,
+   "p50_ms": 120.9123289991112,
+   "p95_ms": 233.36410785104815,
+   "usd_per_1k": 0.0
+  },
+  "3b. Encoder (MiniLM) + LogReg": {
+   "accuracy": 0.9896774193548387,
+   "precision": 0.9711538461538461,
+   "recall": 0.9528301886792453,
+   "f1": 0.9619047619047619,
+   "f1_SUB": 1.0,
+   "train_s": 133.72591791600007,
+   "msg_per_s": 34.82368653733924,
+   "p50_ms": 27.364265500182228,
+   "p95_ms": 38.48782355071307,
+   "usd_per_1k": 0.0
+  },
+  "3c. Encoder (MiniLM) + MLP head": {
+   "accuracy": 0.9909677419354839,
+   "precision": 0.9900990099009901,
+   "recall": 0.9433962264150944,
+   "f1": 0.966183574879227,
+   "f1_SUB": 1.0,
+   "train_s": 132.90944177000074,
+   "msg_per_s": 43.542441945320604,
+   "p50_ms": 26.22967699971923,
+   "p95_ms": 39.04117499996571,
+   "usd_per_1k": 0.0
+  }
+ }
+}
